@@ -7,4 +7,4 @@ src
    google_style
    numpy
    reStructredText
-   demo
+
