@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab 2: 蓝图的学习与使用 &mdash; sphinx_demo 1.0 文档</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> sphinx_demo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#"><strong>Lab 2</strong>: 蓝图的学习与使用</a></li>
+<li><a class="reference internal" href="#id1">作用</a></li>
+<li><a class="reference internal" href="#id2">用法</a></li>
+<li><a class="reference internal" href="#id3">代码</a></li>
+<li><a class="reference internal" href="#id4">参考资料</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">sphinx_demo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><strong>Lab 2</strong>: 蓝图的学习与使用</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/demo.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lab-2">
+<h1><strong>Lab 2</strong>: 蓝图的学习与使用<a class="headerlink" href="#lab-2" title="永久链接至标题"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p><strong>小组成员</strong></p>
+<p>201932110133沈鹏程</p>
+<p>201932110132邱政淞</p>
+<p>201932110131乔铁铮</p>
+<p>201932110135孙超杰</p>
+<p>201932110136孙诚浩</p>
+<p><strong>项目GitHub地址</strong>: <a class="reference external" href="https://github.com/ChiefEye-official/Test/">BluePrint</a>.</p>
+<p><strong>项目Read the Doc地址</strong>: <a class="reference external" href="https://readthedocs.org/projects/testenglishpal/">Read the Doc</a>.</p>
+<p><strong>项目演示视频</strong>: <a class="reference external" href="https://www.bilibili.com/video/BV1A3411t7Ct?spm_id_from=333.999.0.0">Bilibili</a>.</p>
+</section>
+<section id="id1">
+<h1>作用<a class="headerlink" href="#id1" title="永久链接至标题"></a></h1>
+<p>blueprint把不同功能的module分开。可以让应用模块化，针对大型应用。
+蓝图的基本概念：在蓝图被注册到应用之后，所要执行的操作的集合。当分配请求时， Flask 会把蓝图和视图函数关联起来，并生成两个端点之前的 URL 。
+比如只有一个run.py。有些功能需要多人分开来写，有些功能会有交错的可能，代码位置也不会在一起，这样可以用蓝图来开关一些模块（功能）和宏定义类似，但不是可插拔的应用而是一套可以注册在应用中的操作，并且可以注册多次。或者简单滴需要降低耦合，提高模块复用率。比如开发环境和应用环境的不同，可以用蓝图来切换环境。
+蓝图的缺点是一旦应用被创建后，只有销毁整个应用对象才能注销蓝图。</p>
+</section>
+<section id="id2">
+<h1>用法<a class="headerlink" href="#id2" title="永久链接至标题"></a></h1>
+<p>如果使用errorhandler 修饰器，那么只有蓝本中的错误才能触发处理程序。即修饰器由蓝本提供。要想注册程序全局的错误处理程序，必须使用app_errorhandler。</p>
+<p>创建 URL用法：
+Flask 会为蓝本中的全部端点加上一个命名空间，这样就可以在不
+同的蓝本中使用相同的端点名定义视图函数，而不会产生冲突。（跨蓝本）
+在单脚本程序中：index() 视图函数的URL 可使用
+url_for(‘index’)
+在蓝图中：index() 视图函数的URL 可使用
+url_for(‘main.index’)
+另外，如果在一个蓝图的视图函数或者被渲染的模板中需要链接同一个蓝图中的其他端点，那么使用相对重定向，只使用一个点使用为前缀。简写形式（命名空间是当前请求所在的蓝本）：
+url_for(‘.index’)
+Methods and materials
+=================================================</p>
+<p>①Snakefood：从Python代码中生成依赖，过滤，聚类，并从依赖列表中生成图表。使用Snakefood捕获模块级依赖关系。</p>
+<p>②Graphviz：开源的图形可视化软件。使用graphviz online渲染依赖关系图。</p>
+<p>③Mermaid：基于Javascript的图表和图表工具，使用文本和代码创建图表和可视化，以便动态地创建和修改图表。使用mermaid live editor渲染类/函数级依赖关系图。</p>
+</section>
+<section id="id3">
+<h1>代码<a class="headerlink" href="#id3" title="永久链接至标题"></a></h1>
+<p><strong>UseSqlite.py</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reference: Dusty Phillips.  Python 3 Objected-oriented Programming Second Edition. Pages 326-328.</span>
+<span class="c1"># Copyright (C) 2019 Hui Lan</span>
+
+<span class="kn">import</span> <span class="nn">sqlite3</span>
+
+<span class="k">class</span> <span class="nc">Sqlite3Template</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_fname</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db_fname</span> <span class="o">=</span> <span class="n">db_fname</span>
+
+    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_fname</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">db_fname</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">instructions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query_statement</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">operate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">)</span> <span class="c1"># self.query is to be given in the child classes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">format_results</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">do</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">db_fname</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instructions</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">operate</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">InsertQuery</span><span class="p">(</span><span class="n">Sqlite3Template</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">instructions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="n">query</span>
+
+
+<span class="k">class</span> <span class="nc">RiskQuery</span><span class="p">(</span><span class="n">Sqlite3Template</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">instructions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="n">query</span>
+
+    <span class="k">def</span> <span class="nf">format_results</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">fetchall</span><span class="p">():</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">row</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="c1">#iq = InsertQuery(&#39;RiskDB.db&#39;)</span>
+    <span class="c1">#iq.instructions(&quot;INSERT INTO inspection Values (&#39;FoodSupplies&#39;, &#39;RI2019051301&#39;, &#39;2019-05-13&#39;, &#39;{}&#39;)&quot;)</span>
+    <span class="c1">#iq.do()</span>
+    <span class="c1">#iq.instructions(&quot;INSERT INTO inspection Values (&#39;CarSupplies&#39;, &#39;RI2019051302&#39;, &#39;2019-05-13&#39;, &#39;{[{\&quot;risk_name\&quot;:\&quot;elevator\&quot;}]}&#39;)&quot;)</span>
+    <span class="c1">#iq.do()</span>
+
+    <span class="n">rq</span> <span class="o">=</span> <span class="n">RiskQuery</span><span class="p">(</span><span class="s1">&#39;RiskDB.db&#39;</span><span class="p">)</span>
+    <span class="n">rq</span><span class="o">.</span><span class="n">instructions</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM inspection WHERE inspection_serial_number LIKE &#39;RI20190513%&#39;&quot;</span><span class="p">)</span>
+    <span class="n">rq</span><span class="o">.</span><span class="n">do</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">rq</span><span class="o">.</span><span class="n">format_results</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><strong>upload.py</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span>
+
+<span class="n">upload_bp</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">&#39;/upload&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="nd">@upload_bp</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/upload&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">upload</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;&#39;&lt;form action=&quot;/&quot;method=&quot;post&quot;enctype=&quot;multipart/form-data&quot;&gt;</span>
+<span class="s1">            &lt;input type=&quot;file&quot;name=&quot;file&quot;&gt;&lt;input name=&quot;description&quot;&gt;&lt;input type=&quot;submit&quot;value=&quot;Upload&quot;&gt;&lt;/form&gt;&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+<p><strong>show.py</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">UseSqlite</span> <span class="kn">import</span> <span class="n">RiskQuery</span>
+
+<span class="n">show_bp</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">&#39;show&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">make_html_paragraph</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>  <span class="c1"># 将数据库中获取到的图片和信息格式化展现在网页上</span>
+    <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">lst</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    <span class="n">picture_path</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">picture_name</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">picture_path</span><span class="p">)</span>
+    <span class="n">im</span><span class="o">.</span><span class="n">thumbnail</span><span class="p">((</span><span class="mi">400</span><span class="p">,</span> <span class="mi">300</span><span class="p">))</span>
+    <span class="n">im</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;./static/figure/&#39;</span> <span class="o">+</span> <span class="n">picture_name</span><span class="p">,</span> <span class="s1">&#39;jpeg&#39;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="s1">&#39;&lt;p&gt;&#39;</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39;&lt;i&gt;</span><span class="si">%s</span><span class="s1">&lt;/i&gt;&lt;br/&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">lst</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39;&lt;i&gt;</span><span class="si">%s</span><span class="s1">&lt;/i&gt;&lt;br/&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">lst</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39;&lt;a href=&quot;</span><span class="si">%s</span><span class="s1">&quot;&gt;&lt;img src=&quot;./static/figure/</span><span class="si">%s</span><span class="s1">&quot;alt=&quot;风景图&quot;&gt;&lt;/a&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">picture_path</span><span class="p">,</span> <span class="n">picture_name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span> <span class="o">+</span> <span class="s1">&#39;&lt;/p&gt;&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">make_html_photo</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">lst</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    <span class="n">picture_path</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">picture_name</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">picture_path</span><span class="p">)</span>
+    <span class="n">im</span><span class="o">.</span><span class="n">thumbnail</span><span class="p">((</span><span class="mi">400</span><span class="p">,</span> <span class="mi">300</span><span class="p">))</span>
+    <span class="n">real_path</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">picture_path</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="s1">&#39;&lt;p&gt;&#39;</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39;&lt;i&gt;</span><span class="si">%s</span><span class="s1">&lt;/i&gt;&lt;br/&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">lst</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39;&lt;i&gt;</span><span class="si">%s</span><span class="s1">&lt;/i&gt;&lt;br/&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">lst</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="s1">&#39;&lt;a href=&quot;</span><span class="si">%s</span><span class="s1">&quot;&gt;&lt;img src=&quot;../static/figure/</span><span class="si">%s</span><span class="s1">&quot;alt=&quot;风景图&quot;&gt;&lt;/a&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">real_path</span><span class="p">,</span> <span class="n">picture_name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span> <span class="o">+</span> <span class="s1">&#39;&lt;/p&gt;&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">get_database_photos</span><span class="p">():</span>  <span class="c1"># 从数据库中获取所有图片及其相关信息</span>
+    <span class="n">rq</span> <span class="o">=</span> <span class="n">RiskQuery</span><span class="p">(</span><span class="s1">&#39;./static/RiskDB.db&#39;</span><span class="p">)</span>
+    <span class="n">rq</span><span class="o">.</span><span class="n">instructions</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM photo ORDER By time desc&quot;</span><span class="p">)</span>
+    <span class="n">rq</span><span class="o">.</span><span class="n">do</span><span class="p">()</span>
+    <span class="n">record</span> <span class="o">=</span> <span class="s1">&#39;&lt;p&gt;My past photo&lt;/p&gt;&#39;</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rq</span><span class="o">.</span><span class="n">format_results</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">):</span>  <span class="c1"># 将每条图片信息记录按照一定的样式显示在网页上</span>
+        <span class="n">record</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">make_html_paragraph</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">record</span> <span class="o">+</span> <span class="s1">&#39;&lt;/table&gt;</span><span class="se">\n</span><span class="s1">&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">get_description_photos</span><span class="p">(</span><span class="n">description</span><span class="p">):</span>
+    <span class="n">rq</span> <span class="o">=</span> <span class="n">RiskQuery</span><span class="p">(</span><span class="s1">&#39;./static/RiskDB.db&#39;</span><span class="p">)</span>
+    <span class="n">rq</span><span class="o">.</span><span class="n">instructions</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM photo where description = &#39;</span><span class="si">%s</span><span class="s2">&#39; &quot;</span> <span class="o">%</span> <span class="n">description</span><span class="p">)</span>
+    <span class="n">rq</span><span class="o">.</span><span class="n">do</span><span class="p">()</span>
+    <span class="n">record</span> <span class="o">=</span> <span class="s1">&#39;&lt;p&gt;search result&lt;/p&gt;&#39;</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rq</span><span class="o">.</span><span class="n">format_results</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">):</span>
+        <span class="n">record</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">make_html_photo</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">record</span> <span class="o">+</span> <span class="s1">&#39;&lt;/table&gt;</span><span class="se">\n</span><span class="s1">&#39;</span>
+
+
+<span class="nd">@show_bp</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/show&#39;</span><span class="p">)</span>  <span class="c1"># 展示所有照片信息页面</span>
+<span class="k">def</span> <span class="nf">show</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">get_database_photos</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>search.py</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">show</span> <span class="kn">import</span> <span class="n">get_description_photos</span>
+
+<span class="n">search_bp</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">&#39;/search&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="nd">@search_bp</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/search&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">search</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;&#39;&lt;form action=&quot;/search/query-string&quot;method=&quot;post&quot;enctype=&quot;multipart/form-data&quot;&gt;</span>
+<span class="s1">                &lt;input name=&quot;description&quot;&gt;&lt;input type=&quot;submit&quot;value=&quot;search&quot;&gt;&lt;/form&gt;&#39;&#39;&#39;</span>
+
+
+<span class="nd">@search_bp</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/search/query-string&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">query_string</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span>
+        <span class="n">page</span> <span class="o">=</span> <span class="n">get_description_photos</span><span class="p">(</span><span class="n">description</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">page</span>
+</pre></div>
+</div>
+<p><strong>Lab.py</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Created on Mon Jun  3 15:42:51 2019</span>
+
+<span class="sd">@author: Administrator</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">UseSqlite</span> <span class="kn">import</span> <span class="n">InsertQuery</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">show</span> <span class="kn">import</span> <span class="n">get_database_photos</span>
+<span class="kn">from</span> <span class="nn">upload</span> <span class="kn">import</span> <span class="n">upload_bp</span>
+<span class="kn">from</span> <span class="nn">show</span> <span class="kn">import</span> <span class="n">show_bp</span>
+<span class="kn">from</span> <span class="nn">search</span> <span class="kn">import</span> <span class="n">search_bp</span>
+<span class="kn">from</span> <span class="nn">api_json</span> <span class="kn">import</span> <span class="n">api_bp</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="c1"># 将蓝图注册到app</span>
+<span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">upload_bp</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">show_bp</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">search_bp</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">api_bp</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">uploaded_file</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">files</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span>
+        <span class="n">time_str</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">%H%M%S&#39;</span><span class="p">)</span>
+        <span class="n">new_filename</span> <span class="o">=</span> <span class="n">time_str</span> <span class="o">+</span> <span class="s1">&#39;.jpg&#39;</span>
+        <span class="n">uploaded_file</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;./static/upload/&#39;</span> <span class="o">+</span> <span class="n">new_filename</span><span class="p">)</span>
+        <span class="n">time_info</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span><span class="p">)</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">form</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;./static/upload/&#39;</span> <span class="o">+</span> <span class="n">new_filename</span>
+        <span class="n">iq</span> <span class="o">=</span> <span class="n">InsertQuery</span><span class="p">(</span><span class="s1">&#39;./static/RiskDB.db&#39;</span><span class="p">)</span>
+        <span class="n">iq</span><span class="o">.</span><span class="n">instructions</span><span class="p">(</span><span class="s2">&quot;INSERT INTO photo Values(&#39;</span><span class="si">%s</span><span class="s2">&#39;,&#39;</span><span class="si">%s</span><span class="s2">&#39;,&#39;</span><span class="si">%s</span><span class="s2">&#39;,&#39;</span><span class="si">%s</span><span class="s2">&#39;)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time_info</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">new_filename</span><span class="p">))</span>
+        <span class="n">iq</span><span class="o">.</span><span class="n">do</span><span class="p">()</span>
+        <span class="k">return</span> <span class="s1">&#39;&lt;p&gt;You have uploaded </span><span class="si">%s</span><span class="s1">.&lt;br/&gt; &lt;a href=&quot;/&quot;&gt;Return&lt;/a&gt;.&#39;</span> <span class="o">%</span> <span class="n">uploaded_file</span><span class="o">.</span><span class="n">filename</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">page</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            &lt;a href=&#39;/upload&#39;&gt;upload&lt;/a&gt;</span>
+<span class="s1">            &lt;a href=&#39;/search&#39;&gt;search&lt;/a&gt;</span>
+<span class="s1">            &lt;a href=&#39;/show&#39;&gt;show&lt;/a&gt;</span>
+<span class="s1">            &lt;a href=&#39;/api_json&#39;&gt;api_json&lt;/a&gt;</span>
+<span class="s1">       &#39;&#39;&#39;</span>
+        <span class="n">page</span> <span class="o">+=</span> <span class="n">get_database_photos</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">page</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>api_json.py</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span>
+<span class="kn">from</span> <span class="nn">UseSqlite</span> <span class="kn">import</span> <span class="n">RiskQuery</span>
+
+<span class="n">api_bp</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s1">&#39;/api_json&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="nd">@api_bp</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/api_json&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">api_json</span><span class="p">():</span>
+    <span class="n">rq</span> <span class="o">=</span> <span class="n">RiskQuery</span><span class="p">(</span><span class="s1">&#39;./static/RiskDB.db&#39;</span><span class="p">)</span>
+    <span class="n">rq</span><span class="o">.</span><span class="n">instructions</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM photo ORDER By time desc&quot;</span><span class="p">)</span>
+    <span class="n">rq</span><span class="o">.</span><span class="n">do</span><span class="p">()</span>
+    <span class="n">lst</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 存储输出的图片信息的数组</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># 手动给图片添加ID</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rq</span><span class="o">.</span><span class="n">format_results</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">):</span>
+        <span class="n">photo</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+        <span class="n">picture_time</span> <span class="o">=</span> <span class="n">photo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># 获取上传时间</span>
+        <span class="n">picture_description</span> <span class="o">=</span> <span class="n">photo</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># 获取图片描述</span>
+        <span class="n">picture_path</span> <span class="o">=</span> <span class="n">photo</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>  <span class="c1"># 获取图片存储路径</span>
+        <span class="n">photo_size</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">format</span><span class="p">((</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">picture_path</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">),</span> <span class="s1">&#39;.2f&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;KB&#39;</span>  <span class="c1"># 获取图片文件大小</span>
+        <span class="n">lst</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="n">i</span><span class="p">,</span> <span class="s1">&#39;upload_date&#39;</span><span class="p">:</span> <span class="n">picture_time</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">picture_description</span><span class="p">,</span> <span class="s1">&#39;photo_size&#39;</span><span class="p">:</span> <span class="n">photo_size</span><span class="p">}]</span>
+        <span class="n">lst2</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">lst</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">separators</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">))</span>
+        <span class="n">page</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">lst2</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">page</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h1>参考资料<a class="headerlink" href="#id4" title="永久链接至标题"></a></h1>
+<p>[1] zoukankan <a class="reference external" href="https://stackoverflow.com/questions/7974771/flask-blueprint-template-folder">https://stackoverflow.com/questions/7974771/flask-blueprint-template-folder</a>
+[2] ITEYE <a class="reference external" href="https://www.iteye.com/blog/bcyy-1808978">https://www.iteye.com/blog/bcyy-1808978</a>
+[3] 百度百科 <a class="reference external" href="https://baike.baidu.com/item/Blueprint/3592968?fr=aladdin">https://baike.baidu.com/item/Blueprint/3592968?fr=aladdin</a></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2021, SCJ.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
