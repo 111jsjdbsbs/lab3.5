@@ -10,9 +10,8 @@
    :maxdepth: 2
    :caption: Contents:
 
-**LAB2**: `LAB2`_.
 
-.. _LAB2: http://localhost:63342/Sphinx_demo/doc/build/html/demo.html?_ijt=qcc7nipm45lg6i8p5af7fmrnfl&_ij_reload
+   demo.rst
 
 
 Indices and tables
