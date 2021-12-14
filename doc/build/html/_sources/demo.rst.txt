@@ -24,11 +24,11 @@
 
 **项目GitHub地址**: `BluePrint`_.
 
-.. _BluePrint: https://github.com/ChiefEye-official/Test/
+.. _BluePrint: https://github.com/111jsjdbsbs/Sphinx_demo
 
 **项目Read the Doc地址**: `Read the Doc`_.
 
-.. _Read The Doc: https://readthedocs.org/projects/testenglishpal/
+.. _Read The Doc: https://lanhui-lab2.readthedocs.io/en/latest/demo.html
 
 **项目演示视频**: `Bilibili`_.
 
