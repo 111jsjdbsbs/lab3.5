@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lab 2: 蓝图的学习与使用 &mdash; sphinx_demo 1.0 文档</title>
+  <title>1. Lab 2: 蓝图的学习与使用 &mdash; sphinx_demo 1.0 文档</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,6 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="6. Lab 3: LAB 3" href="lab3.html" />
     <link rel="prev" title="实验项目说明书" href="index.html" /> 
 </head>
 
@@ -37,15 +38,15 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#"><strong>Lab 2</strong>: 蓝图的学习与使用</a><ul class="simple">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. <strong>Lab 2</strong>: 蓝图的学习与使用</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#id1">作用</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#id2">用法</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#id3">代码</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#id4">参考资料</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#id1">2. 作用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#id2">3. 用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#id3">4. 代码</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#id4">5. 参考资料</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">6. <strong>Lab 3</strong>: LAB 3</a></li>
 </ul>
 
         </div>
@@ -62,7 +63,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li><strong>Lab 2</strong>: 蓝图的学习与使用</li>
+      <li><span class="section-number">1. </span><strong>Lab 2</strong>: 蓝图的学习与使用</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/demo.rst.txt" rel="nofollow"> 查看页面源码</a>
       </li>
@@ -73,7 +74,7 @@
            <div itemprop="articleBody">
              
   <section id="lab-2">
-<h1><strong>Lab 2</strong>: 蓝图的学习与使用<a class="headerlink" href="#lab-2" title="永久链接至标题"></a></h1>
+<h1><span class="section-number">1. </span><strong>Lab 2</strong>: 蓝图的学习与使用<a class="headerlink" href="#lab-2" title="永久链接至标题"></a></h1>
 <div class="toctree-wrapper compound">
 </div>
 <p><strong>小组成员</strong></p>
@@ -83,18 +84,18 @@
 <p>201932110135孙超杰</p>
 <p>201932110136孙诚浩</p>
 <p><strong>项目GitHub地址</strong>: <a class="reference external" href="https://github.com/111jsjdbsbs/Sphinx_demo">BluePrint</a>.</p>
-<p><strong>项目Read the Doc地址</strong>: <a class="reference external" href="https://lanhui-lab2.readthedocs.io/en/latest/demo.html">Read the Doc</a>.</p>
+<p><strong>项目Read the Doc地址</strong>: <a class="reference external" href="https://sphinx-demo8.readthedocs.io/en/latest/demo.html">Read the Doc</a>.</p>
 <p><strong>项目演示视频</strong>: <a class="reference external" href="https://www.bilibili.com/video/BV1A3411t7Ct?spm_id_from=333.999.0.0">Bilibili</a>.</p>
 </section>
 <section id="id1">
-<h1>作用<a class="headerlink" href="#id1" title="永久链接至标题"></a></h1>
+<h1><span class="section-number">2. </span>作用<a class="headerlink" href="#id1" title="永久链接至标题"></a></h1>
 <p>blueprint把不同功能的module分开。可以让应用模块化，针对大型应用。
 蓝图的基本概念：在蓝图被注册到应用之后，所要执行的操作的集合。当分配请求时， Flask 会把蓝图和视图函数关联起来，并生成两个端点之前的 URL 。
 比如只有一个run.py。有些功能需要多人分开来写，有些功能会有交错的可能，代码位置也不会在一起，这样可以用蓝图来开关一些模块（功能）和宏定义类似，但不是可插拔的应用而是一套可以注册在应用中的操作，并且可以注册多次。或者简单滴需要降低耦合，提高模块复用率。比如开发环境和应用环境的不同，可以用蓝图来切换环境。
 蓝图的缺点是一旦应用被创建后，只有销毁整个应用对象才能注销蓝图。</p>
 </section>
 <section id="id2">
-<h1>用法<a class="headerlink" href="#id2" title="永久链接至标题"></a></h1>
+<h1><span class="section-number">3. </span>用法<a class="headerlink" href="#id2" title="永久链接至标题"></a></h1>
 <p>如果使用errorhandler 修饰器，那么只有蓝本中的错误才能触发处理程序。即修饰器由蓝本提供。要想注册程序全局的错误处理程序，必须使用app_errorhandler。</p>
 <p>创建 URL用法：
 Flask 会为蓝本中的全部端点加上一个命名空间，这样就可以在不
@@ -112,7 +113,7 @@ Methods and materials
 <p>③Mermaid：基于Javascript的图表和图表工具，使用文本和代码创建图表和可视化，以便动态地创建和修改图表。使用mermaid live editor渲染类/函数级依赖关系图。</p>
 </section>
 <section id="id3">
-<h1>代码<a class="headerlink" href="#id3" title="永久链接至标题"></a></h1>
+<h1><span class="section-number">4. </span>代码<a class="headerlink" href="#id3" title="永久链接至标题"></a></h1>
 <p><strong>UseSqlite.py</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reference: Dusty Phillips.  Python 3 Objected-oriented Programming Second Edition. Pages 326-328.</span>
 <span class="c1"># Copyright (C) 2019 Hui Lan</span>
@@ -359,7 +360,7 @@ Methods and materials
 </div>
 </section>
 <section id="id4">
-<h1>参考资料<a class="headerlink" href="#id4" title="永久链接至标题"></a></h1>
+<h1><span class="section-number">5. </span>参考资料<a class="headerlink" href="#id4" title="永久链接至标题"></a></h1>
 <p>[1] zoukankan <a class="reference external" href="https://stackoverflow.com/questions/7974771/flask-blueprint-template-folder">https://stackoverflow.com/questions/7974771/flask-blueprint-template-folder</a>
 [2] ITEYE <a class="reference external" href="https://www.iteye.com/blog/bcyy-1808978">https://www.iteye.com/blog/bcyy-1808978</a>
 [3] 百度百科 <a class="reference external" href="https://baike.baidu.com/item/Blueprint/3592968?fr=aladdin">https://baike.baidu.com/item/Blueprint/3592968?fr=aladdin</a></p>
@@ -370,6 +371,7 @@ Methods and materials
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="实验项目说明书" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="lab3.html" class="btn btn-neutral float-right" title="6. Lab 3: LAB 3" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

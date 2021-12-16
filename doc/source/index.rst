@@ -8,12 +8,10 @@
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :numbered:
 
-
-   demo.rst
-
-
+   demo
+   lab3
 Indices and tables
 ==================
 

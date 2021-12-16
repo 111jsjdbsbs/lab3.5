@@ -28,7 +28,7 @@
 
 **项目Read the Doc地址**: `Read the Doc`_.
 
-.. _Read The Doc: https://lanhui-lab2.readthedocs.io/en/latest/demo.html
+.. _Read The Doc: https://sphinx-demo8.readthedocs.io/en/latest/demo.html
 
 **项目演示视频**: `Bilibili`_.
 
